@@ -1,21 +1,19 @@
 pipeline {
-    agent {
-        docker { image 'python:3.7.12-alpine' }
-    }
+    agent none
     stages {
         stage('build') {
-            steps {
-                echo 'building the application'
+            agent {
+                docker { image 'node' }
             }
-        }
-        stage('test'){
             steps {
-                echo 'testing the application'
+               sh 'node -v'
+               sh 'now=`date`; echo "<h1>${now}</h1>" > now.html'
             }
         }
         stage('deploy') {
+            agent any
             steps {
-                echo 'deploying the application'
+               sh 'docker cp now.html static_files:/app/public'
             }
         }
     }
