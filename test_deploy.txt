@@ -1,0 +1,2 @@
+now=`date`; echo "<h1>${now}</h1>" > now.html
+docker cp now.html static_files:/app/public
