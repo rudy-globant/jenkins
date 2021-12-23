@@ -13,6 +13,7 @@ ldap
 mailer
 matrix-auth
 pam-auth
+pipeline-aws
 pipeline-github-lib
 pipeline-stage-view
 ssh-slaves
