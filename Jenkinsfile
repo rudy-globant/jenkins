@@ -17,6 +17,7 @@ pipeline {
             agent any
             steps {
                 //sh "docker cp ${BUILD_NAME} static_files:/app/public"
+                
                 withAWS(region:'us-west-2',credentials:'aws-creds') {
                     s3Upload(file:"${BUILD_NAME}", bucket:'s3-jenkins-ui-app', path:"from/jenkins/${BUILD_NAME}")
                 }
